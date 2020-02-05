@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>README</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="created" content="2020-02-05T19:05:40+0100"/>
+        <meta name="modified" content="2020-02-05T19:08:23+0100"/>
+        <meta name="tags" content=""/>
+        <meta name="last device" content="MacBook Air Gold"/>
+    </head>
+    <body>
+        <div class="note-wrapper">
+            <h1>README</h1>
+<br>
+<h2>JavaScript style guide, linter, and formatter</h2>
+<p>This module saves you (and others!) time in three ways:</p>
+<br>
+<ul><li><b>No configuration.</b> The easiest way to enforce code quality in your
+</li></ul>
+<p>project. No decisions to make. No <code class='code-inline'>.eslintrc</code> files to </p>
+<p>manage. It just works.</p>
+<ul><li><b>Automatically format code.</b> Just run <code class='code-inline'>standard --fix</code> and say goodbye to
+</li></ul>
+<p>messy or inconsistent code.</p>
+<ul><li><b>Catch style issues & programmer errors early.</b> Save precious code review
+</li></ul>
+<p>time by eliminating back-and-forth between reviewer & contributor.</p>
+<br>
+<p>Give it a try by running <code class='code-inline'>npx standard --fix</code> right now!</p>
+<br>
+<h2>Table of Contents</h2>
+<br>
+<ul><li>Quick start
+<ul><li>	<a href="#install">Install</a>
+</li><li>	<a href="#usage">Usage</a>
+</li><li>	<a href="#what-you-might-do-if-youre-clever">What you might do if you're clever</a>
+</li></ul></li><li>FAQ
+<ul><li>	<a href="#why-should-i-use-javascript-standard-style">Why should I use JavaScript Standard Style?</a>
+</li><li>	<a href="#who-uses-javascript-standard-style">Who uses JavaScript Standard Style?</a>
+</li><li>	<a href="#are-there-text-editor-plugins">Are there text editor plugins?</a>
+</li><li>	<a href="#is-there-a-readme-badge">Is there a readme badge?</a>
+</li><li>	<a href="#i-disagree-with-rule-x-can-you-change-it">I disagree with rule X, can you change it?</a>
+</li><li>	<a href="#but-this-isnt-a-real-web-standard">But this isn't a real web standard!</a>
+</li><li>	<a href="#is-there-an-automatic-formatter">Is there an automatic formatter?</a>
+</li><li>	<a href="#how-do-i-ignore-files">How do I ignore files?</a>
+</li><li>	<a href="#how-do-i-hide-a-certain-warning">How do I hide a certain warning?</a>
+</li><li>	<a href="#i-use-a-library-that-pollutes-the-global-namespace-how-do-i-prevent-variable-is-not-defined-errors">I use a library that pollutes the global namespace. How do I prevent "variable is not defined" errors?</a>
+</li><li>	<a href="#how-do-i-use-experimental-javascript-es-next-features">How do I use experimental JavaScript (ES Next) features?</a>
+</li><li>	<a href="#can-i-use-a-javascript-language-variant-like-flow-or-typescript">Can I use a JavaScript language variant, like Flow or TypeScript?</a>
+</li><li>	<a href="#what-about-mocha-jest-jasmine-qunit-etc">What about Mocha, Jest, Jasmine, QUnit, etc?</a>
+</li><li>	<a href="#what-about-web-workers-and-service-workers">What about Web Workers and Service Workers?</a>
+</li><li>	<a href="#can-i-check-code-inside-of-markdown-or-html-files">Can I check code inside of Markdown or HTML files?</a>
+</li><li>	<a href="#is-there-a-git-pre-commit-hook">Is there a Git <code class='code-inline'>pre-commit</code> hook?</a>
+</li><li>	<a href="#how-do-i-make-the-output-all-colorful-and-pretty">How do I make the output all colorful and pretty?</a>
+</li><li>	<a href="#is-there-a-nodejs-api">Is there a Node.js API?</a>
+</li><li>	<a href="#how-do-i-contribute-to-standardjs">How do I contribute to StandardJS?</a>
+</li></ul></li><li><a href="#license">License</a>
+</li></ul>
+<br>
+<h2>Install</h2>
+<p>The easiest way to use JavaScript Standard Style is to install it globally as a</p>
+<p>Node command line program. Run the following command in Terminal:</p>
+<br>
+<pre><code class='code-multiline' lang='bash'>$ <span class="sf_code_function">npm</span> <span class="sf_code_function">install</span> standard --global</code></pre>
+<p><br></p>
+<p>Or, you can install <code class='code-inline'>standard</code> locally, for use in a single project:</p>
+<br>
+<pre><code class='code-multiline' lang='bash'>$ <span class="sf_code_function">npm</span> <span class="sf_code_function">install</span> standard --save-dev</code></pre>
+<p><br></p>
+<p>/Note: To run the preceding commands, <a href="http://nodejs.org">Node.js</a> and <a href="https://npmjs.com">npm</a> must be installed./</p>
+<br>
+<h2>Usage</h2>
+<p>After you've installed <code class='code-inline'>standard</code>, you should be able to use the <code class='code-inline'>standard</code> program. The</p>
+<p>simplest use case would be checking the style of all JavaScript files in the</p>
+<p>current working directory:</p>
+<br>
+<pre><code class='code-multiline' lang='bash'>$ standard
+Error: Use JavaScript Standard Style
+  lib/torrent.js:950:11: Expected <span class="sf_code_string">'==='</span> and instead saw <span class="sf_code_string">'=='</span><span class="sf_code_keyword">.</span></code></pre>
+<p><br></p>
+<p>If you've installed <code class='code-inline'>standard</code> locally, run with <code class='code-inline'>npx</code> instead:</p>
+<br>
+<pre><code class='code-multiline' lang='bash'>$ npx standard</code></pre>
+<p><br></p>
+<p>You can optionally pass in a directory (or directories) using the glob pattern. Be</p>
+<p>sure to quote paths containing glob patterns so that they are expanded by</p>
+<p><code class='code-inline'>standard</code> instead of your shell:</p>
+<br>
+<pre><code class='code-multiline' lang='bash'>$ standard <span class="sf_code_string">"src/util/**/*.js"</span> <span class="sf_code_string">"test/**/*.js"</span></code></pre>
+<p><br></p>
+<p><b>Note:</b> by default <code class='code-inline'>standard</code> will look for all files matching the patterns:</p>
+<p><code class='code-inline'>**/*.js</code>, <code class='code-inline'>**/*.jsx</code>.</p>
+<br>
+<h2>What you might do if you're clever</h2>
+<br>
+<ol start="1"><li>Add it to <code class='code-inline'>package.json</code>
+</li></ol>
+<br>
+<pre><code class='code-multiline' lang='json'><span class="sf_code_punctuation">{</span>
+  <span class="sf_code_property">"name"</span><span class="sf_code_operator">:</span> <span class="sf_code_string">"my-cool-package"</span><span class="sf_code_punctuation">,</span>
+  <span class="sf_code_property">"devDependencies"</span><span class="sf_code_operator">:</span> <span class="sf_code_punctuation">{</span>
+    <span class="sf_code_property">"standard"</span><span class="sf_code_operator">:</span> <span class="sf_code_string">"*"</span>
+  <span class="sf_code_punctuation">},</span>
+  <span class="sf_code_property">"scripts"</span><span class="sf_code_operator">:</span> <span class="sf_code_punctuation">{</span>
+    <span class="sf_code_property">"test"</span><span class="sf_code_operator">:</span> <span class="sf_code_string">"standard && node my-tests.js"</span>
+  <span class="sf_code_punctuation">}</span>
+<span class="sf_code_punctuation">}</span></code></pre>
+<p><br></p>
+<ol start="2"><li>Style is checked automatically when you run <code class='code-inline'>npm test</code>
+</li></ol>
+<br>
+<pre><code class='code-multiline' lang='bash'>$ <span class="sf_code_function">npm</span> <span class="sf_code_function">test</span>
+Error: Use JavaScript Standard Style
+  lib/torrent.js:950:11: Expected <span class="sf_code_string">'==='</span> and instead saw <span class="sf_code_string">'=='</span><span class="sf_code_keyword">.</span></code></pre>
+<p><br></p>
+<ol start="3"><li>Never give style feedback on a pull request again!
+</li></ol>
+<br>
+<h2>Why should I use JavaScript Standard Style?</h2>
+<p>The beauty of JavaScript Standard Style is that it's simple. No one wants to</p>
+<p>maintain multiple hundred-line style configuration files for every module/project</p>
+<p>they work on. Enough of this madness!</p>
+<br>
+<p>This module saves you (and others!) time in three ways:</p>
+<br>
+<ul><li><b>No configuration.</b> The easiest way to enforce consistent style in your
+</li></ul>
+<p>project. Just drop it in.</p>
+<ul><li><b>Automatically format code.</b> Just run <code class='code-inline'>standard --fix</code> and say goodbye to
+</li></ul>
+<p>messy or inconsistent code.</p>
+<ul><li><b>Catch style issues & programmer errors early.</b> Save precious code review
+</li></ul>
+<p>time by eliminating back-and-forth between reviewer & contributor.</p>
+<br>
+<p>Adopting <code class='code-inline'>standard</code> style means ranking the importance of code clarity and</p>
+<p>community conventions higher than personal style. This might not make sense for</p>
+<p>100% of projects and development cultures, however open source can be a hostile</p>
+<p>place for newbies. Setting up clear, automated contributor expectations makes a</p>
+<p>project healthier.</p>
+<br>
+<p>For more info, see the conference talk ["Write Perfect Code with Standard and</p>
+<p>ESLint"](<a href="https://www.youtube.com/watch?v=kuHfMw8j4xk">https://www.youtube.com/watch?v=kuHfMw8j4xk</a>). In this talk, you'll learn</p>
+<p>about linting, when to use <code class='code-inline'>standard</code> versus <code class='code-inline'>eslint</code>, and how <code class='code-inline'>prettier</code> compares</p>
+<p>to <code class='code-inline'>standard</code>.</p>
+<br>
+<h2>Who uses JavaScript Standard Style?</h2>
+<p>[](<a href="https://nodejs.org">https://nodejs.org</a>) | [](<a href="https://www.npmjs.com">https://www.npmjs.com</a>) | [](<a href="https://github.com">https://github.com</a>) | [](<a href="https://www.elastic.co">https://www.elastic.co</a>) |</p>
+<p>|---|---|---|---|</p>
+<br>
+<p>[](<a href="http://expressjs.com">http://expressjs.com</a>) | [](<a href="http://electron.atom.io">http://electron.atom.io</a>) | [](<a href="https://nuxtjs.org/">https://nuxtjs.org/</a>) | [](<a href="https://atom.io">https://atom.io</a>) |</p>
+<p>|---|---|---|---|</p>
+<br>
+<p>| [](<a href="https://www.mongodb.com">https://www.mongodb.com</a>) | [](<a href="https://www.zendesk.com">https://www.zendesk.com</a>) | [](<a href="https://www.brave.com">https://www.brave.com</a>) | [](<a href="https://zeit.co">https://zeit.co</a>) |</p>
+<p>|---|---|---|---|</p>
+<br>
+<p>| [](<a href="https://nodesource.com">https://nodesource.com</a>) | [](<a href="http://www.nearform.com">http://www.nearform.com</a>) | [](<a href="https://www.typeform.com">https://www.typeform.com</a>) | [](<a href="https://gds.blog.gov.uk">https://gds.blog.gov.uk</a>) |</p>
+<p>|---|---|---|---|</p>
+<br>
+<p>| [](<a href="https://www.heroku.com">https://www.heroku.com</a>) | [](<a href="https://saucelabs.com">https://saucelabs.com</a>) | [](<a href="https://automattic.com">https://automattic.com</a>) | [](<a href="https://www.godaddy.com">https://www.godaddy.com</a>) |</p>
+<p>|---|---|---|---|</p>
+<br>
+<p>| [](<a href="https://webtorrent.io">https://webtorrent.io</a>) | [](<a href="https://ipfs.io">https://ipfs.io</a>) | [](<a href="https://datproject.org">https://datproject.org</a>) | [](<a href="https://bitcoinjs.org">https://bitcoinjs.org</a>) |</p>
+<p>|---|---|---|---|</p>
+<br>
+<p>| [](<a href="https://voltra.co">https://voltra.co</a>) | [](<a href="https://www.treasuredata.com">https://www.treasuredata.com</a>) | [](<a href="https://bitmidi.com">https://bitmidi.com</a>) | [](<a href="https://www.apstudynotes.org">https://www.apstudynotes.org</a>) |</p>
+<p>|---|---|---|---|</p>
+<br>
+<p>| [](<a href="https://www.optiopay.com">https://www.optiopay.com</a>) | [](<a href="https://www.jlrtechincubator.com/jlrti/">https://www.jlrtechincubator.com/jlrti/</a>) | [](<a href="https://www.bustle.com">https://www.bustle.com</a>) | [](<a href="https://www.zentrick.com">https://www.zentrick.com</a>) |</p>
+<p>|---|---|---|---|</p>
+<br>
+<p>| [](<a href="https://greenkeeper.io">https://greenkeeper.io</a>) | [](<a href="https://karma-runner.github.io">https://karma-runner.github.io</a>) | [](<a href="https://www.taser.com">https://www.taser.com</a>) | [](<a href="https://www.neo4j.com">https://www.neo4j.com</a>) |</p>
+<p>|---|---|---|---|</p>
+<br>
+<p>| [](<a href="https://rentograph.com">https://rentograph.com</a>) | [](<a href="https://www.eaze.com">https://www.eaze.com</a>) | [](<a href="https://www.ctrlaltdeseat.com">https://www.ctrlaltdeseat.com</a>) | [](<a href="https://clevertech.biz">https://clevertech.biz</a>) |</p>
+<p>|---|---|---|---|</p>
+<br>
+<p>| [](<a href="https://aragon.org">https://aragon.org</a>) | [](<a href="https://www.flowsent.com">https://www.flowsent.com</a>) | [](<a href="https://www.pumabrowser.com/">https://www.pumabrowser.com/</a>) | [](<a href="https://www.jetbrains.com/webstorm/">https://www.jetbrains.com/webstorm/</a>) |</p>
+<p>|---|---|---|---|</p>
+<br>
+<p>| [](<a href="https://www.fastify.io">https://www.fastify.io</a>) | [](<a href="https://www.scuttlebutt.nz">https://www.scuttlebutt.nz</a>) | [](<a href="https://solid.inrupt.com">https://solid.inrupt.com</a>) | [](<a href="https://www.grab.com">https://www.grab.com</a>) |</p>
+<p>|---|---|---|---|</p>
+<br>
+<p>| Your logo here | Your logo here | Your logo here | Your logo here |</p>
+<p>|---|---|---|---|</p>
+<br>
+<p>In addition to companies, many community members use <code class='code-inline'>standard</code> on packages that</p>
+<p>are <a href="https://raw.githubusercontent.com/standard/standard-packages/master/all.json">too numerous</a></p>
+<p>to list here.</p>
+<br>
+<p><code class='code-inline'>standard</code> is also the top-starred linter in GitHub's</p>
+<p><a href="https://github.com/showcases/clean-code-linters">Clean Code Linter</a> showcase.</p>
+<br>
+<h2>Are there text editor plugins?</h2>
+<p>First, install <code class='code-inline'>standard</code>. Then, install the appropriate plugin for your editor:</p>
+<br>
+<h3>Sublime Text</h3>
+<p>Using *<a href="https://packagecontrol.io/">Package Control</a>*, install *<a href="http://www.sublimelinter.com/en/latest/">SublimeLinter</a>* and</p>
+<p>*<a href="https://packagecontrol.io/packages/SublimeLinter-contrib-standard">SublimeLinter-contrib-standard</a>*.</p>
+<br>
+<p>For automatic formatting on save, install *<a href="https://packagecontrol.io/packages/StandardFormat">StandardFormat</a>*.</p>
+<br>
+<h3>Atom</h3>
+<p>Install *<a href="https://atom.io/packages/linter-js-standard">linter-js-standard</a>*.</p>
+<br>
+<p>Alternatively, you can install *<a href="https://atom.io/packages/linter-js-standard-engine">linter-js-standard-engine</a>*. Instead of</p>
+<p>bundling a version of <code class='code-inline'>standard</code> it will automatically use the version installed</p>
+<p>in your current project. It will also work out of the box with other linters based</p>
+<p>on *<a href="https://github.com/standard/standard-engine">standard-engine</a>*.</p>
+<br>
+<p>For automatic formatting, install *<a href="https://atom.io/packages/standard-formatter">standard-formatter</a>*. For snippets,</p>
+<p>install *<a href="https://atom.io/packages/standardjs-snippets">standardjs-snippets</a>*.</p>
+<br>
+<h3>Visual Studio Code</h3>
+<p>Install *<a href="https://marketplace.visualstudio.com/items/chenxsan.vscode-standardjs">vscode-standardjs</a>*. (Includes support for automatic formatting.)</p>
+<br>
+<p>For JS snippets, install: *<a href="https://marketplace.visualstudio.com/items?itemName=capaj.vscode-standardjs-snippets">vscode-standardjs-snippets</a>*. For React snippets, install *<a href="https://marketplace.visualstudio.com/items/TimonVS.ReactSnippetsStandard">vscode-react-standard</a>*.</p>
+<br>
+<h3>Vim</h3>
+<p>Install *<a href="https://github.com/w0rp/ale">ale</a>*. And add these lines to your <code class='code-inline'>.vimrc</code> file.</p>
+<br>
+<pre><code class='code-multiline' lang='vim'><span class="sf_code_keyword">let</span> g<span class="sf_code_punctuation">:</span>ale_linters <span class="sf_code_operator">=</span> <span class="sf_code_punctuation">{</span>
+\   <span class="sf_code_string">'javascript'</span><span class="sf_code_punctuation">:</span> <span class="sf_code_punctuation">[</span><span class="sf_code_string">'standard'</span><span class="sf_code_punctuation">],</span>
+\<span class="sf_code_punctuation">}</span>
+<span class="sf_code_keyword">let</span> g<span class="sf_code_punctuation">:</span>ale_fixers <span class="sf_code_operator">=</span> <span class="sf_code_punctuation">{</span><span class="sf_code_string">'javascript'</span><span class="sf_code_punctuation">:</span> <span class="sf_code_punctuation">[</span><span class="sf_code_string">'standard'</span><span class="sf_code_punctuation">]}</span></code></pre>
+<p><br></p>
+<p>This sets standard as your only linter and fixer for javascript files and so prevents conflicts with eslint. For linting and automatic fixing on save, add these lines to <code class='code-inline'>.vimrc</code>:</p>
+<pre><code class='code-multiline' lang='vim'><span class="sf_code_keyword">let</span> g<span class="sf_code_punctuation">:</span>ale_lint_on_save <span class="sf_code_operator">=</span> <span class="sf_code_number">1</span>
+<span class="sf_code_keyword">let</span> g<span class="sf_code_punctuation">:</span>ale_fix_on_save <span class="sf_code_operator">=</span> <span class="sf_code_number">1</span></code></pre>
+<p><br></p>
+<p>Alternative plugins to consider include <a href="https://github.com/neomake/neomake">neomake</a> and <a href="https://github.com/vim-syntastic/syntastic">syntastic</a>, both of which have built-in support for <code class='code-inline'>standard</code> (though configuration may be necessary).</p>
+<br>
+<h3>Emacs</h3>
+<p>Install *<a href="http://www.flycheck.org">Flycheck</a>* and check out the *<a href="http://www.flycheck.org/en/latest/user/installation.html">manual</a>* to learn</p>
+<p>how to enable it in your projects.</p>
+<br>
+<h3>Brackets</h3>
+<p>Search the extension registry for *<a href="https://github.com/ishamf/brackets-standard/">"Standard Code Style"</a>* and click "Install".</p>
+<br>
+<h3>WebStorm (PhpStorm, IntelliJ, RubyMine, JetBrains, etc.)</h3>
+<p>WebStorm <a href="https://blog.jetbrains.com/webstorm/2017/01/webstorm-2017-1-eap-171-2272/">recently announced native support</a></p>
+<p>for <code class='code-inline'>standard</code> directly in the IDE.</p>
+<br>
+<p>If you still prefer to configure <code class='code-inline'>standard</code> manually, <a href="docs/webstorm.md">follow this guide</a>. This applies to all JetBrains products, including PhpStorm, IntelliJ, RubyMine, etc.</p>
+<br>
+<h2>Is there a readme badge?</h2>
+<p>Yes! If you use <code class='code-inline'>standard</code> in your project, you can include one of these badges in</p>
+<p>your readme to let people know that your code is using the standard style.</p>
+<br>
+<p><a href="https://github.com/standard/standard">JavaScript Style Guide</a></p>
+<br>
+<pre><code class='code-multiline' lang='markdown'><span class="sf_code_url">[![JavaScript Style Guide](https://cdn.rawgit.com/standard/standard/master/badge.svg)</span>](https://github.com/standard/standard)</code></pre>
+<p><br></p>
+<p><a href="https://standardjs.com">JavaScript Style Guide</a></p>
+<br>
+<pre><code class='code-multiline' lang='markdown'><span class="sf_code_url">[![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)</span>](https://standardjs.com)</code></pre>
+<p><br></p>
+<h2>I disagree with rule X, can you change it?</h2>
+<p>No. The whole point of <code class='code-inline'>standard</code> is to save you time by avoiding</p>
+<p><a href="https://www.freebsd.org/doc/en/books/faq/misc.html#bikeshed-painting">bikeshedding</a> about code style. There are lots of debates online about</p>
+<p>tabs vs. spaces, etc. that will never be resolved. These debates just distract from</p>
+<p>getting stuff done. At the end of the day you have to 'just pick something', and</p>
+<p>that's the whole philosophy of <code class='code-inline'>standard</code>  its a bunch of sensible 'just pick</p>
+<p>something' opinions. Hopefully, users see the value in that over defending their</p>
+<p>own opinions.</p>
+<br>
+<p>There are a couple of similar packages for anyone who does not want to completely accept <code class='code-inline'>standard</code>:</p>
+<ul><li><a href="https://github.com/standard/semistandard">semistandard</a> - standard, with semicolons
+</li><li><a href="https://github.com/standard/standardx">standardx</a> - standard, with custom tweaks
+</li></ul>
+<br>
+<p>If you really want to configure hundreds of ESLint rules individually, you can</p>
+<p>always use <code class='code-inline'>eslint</code> directly with</p>
+<p><a href="https://github.com/standard/eslint-config-standard">eslint-config-standard</a> to</p>
+<p>layer your changes on top.</p>
+<p><a href="https://github.com/josephfrazier/standard-eject"><code class='code-inline'>standard-eject</code></a> can help</p>
+<p>you migrate from <code class='code-inline'>standard</code> to <code class='code-inline'>eslint</code> and <code class='code-inline'>eslint-config-standard</code>.</p>
+<br>
+<p>Pro tip: Just use <code class='code-inline'>standard</code> and move on. There are actual real problems that you</p>
+<p>could spend your time solving! :P</p>
+<br>
+<h2>But this isn't a real web standard!</h2>
+<p>Of course it's not! The style laid out here is not affiliated with any official web</p>
+<p>standards groups, which is why this repo is called <code class='code-inline'>standard/standard</code> and not</p>
+<p><code class='code-inline'>ECMA/standard</code>.</p>
+<br>
+<p>The word "standard" has more meanings than just "web standard" :-) For example:</p>
+<br>
+<ul><li>This module helps hold our code to a high <i>standard of quality</i>.
+</li><li>This module ensures that new contributors follow some basic <i>style standards</i>.
+</li></ul>
+<br>
+<h2>Is there an automatic formatter?</h2>
+<p>Yes! You can use <code class='code-inline'>standard --fix</code> to fix most issues automatically.</p>
+<br>
+<p><code class='code-inline'>standard --fix</code> is built into <code class='code-inline'>standard</code> for maximum convenience. Most problems</p>
+<p>are fixable, but some errors (like forgetting to handle errors) must be fixed</p>
+<p>manually.</p>
+<br>
+<p>To save you time, <code class='code-inline'>standard</code> outputs the message "<code class='code-inline'>Run standard --fix to automatically fix some problems</code>" when it detects problems that can be fixed</p>
+<p>automatically.</p>
+<br>
+<h2>How do I ignore files?</h2>
+<p>Certain paths (<code class='code-inline'>node_modules/</code>, <code class='code-inline'>coverage/</code>, <code class='code-inline'>vendor/</code>, <code class='code-inline'>*.min.js</code>, <code class='code-inline'>bundle.js</code>,</p>
+<p>and files/folders that begin with <code class='code-inline'>.</code> like <code class='code-inline'>.git/</code>) are automatically ignored.</p>
+<br>
+<p>Paths in a project's root <code class='code-inline'>.gitignore</code> file are also automatically ignored.</p>
+<br>
+<p>Sometimes you need to ignore additional folders or specific minified files. To do</p>
+<p>that, add a <code class='code-inline'>standard.ignore</code> property to <code class='code-inline'>package.json</code>:</p>
+<br>
+<pre><code class='code-multiline' lang='json'><span class="sf_code_property">"standard"</span><span class="sf_code_operator">:</span> <span class="sf_code_punctuation">{</span>
+  <span class="sf_code_property">"ignore"</span><span class="sf_code_operator">:</span> <span class="sf_code_punctuation">[</span>
+    <span class="sf_code_string">"**/out/"</span><span class="sf_code_punctuation">,</span>
+    <span class="sf_code_string">"/lib/select2/"</span><span class="sf_code_punctuation">,</span>
+    <span class="sf_code_string">"/lib/ckeditor/"</span><span class="sf_code_punctuation">,</span>
+    <span class="sf_code_string">"tmp.js"</span>
+  <span class="sf_code_punctuation">]</span>
+<span class="sf_code_punctuation">}</span></code></pre>
+<p><br></p>
+<h2>How do I hide a certain warning?</h2>
+<p>In rare cases, you'll need to break a rule and hide the warning generated by</p>
+<p><code class='code-inline'>standard</code>.</p>
+<br>
+<p>JavaScript Standard Style uses <a href="http://eslint.org/">ESLint</a> under-the-hood and</p>
+<p>you can hide warnings as you normally would if you used ESLint directly.</p>
+<br>
+<p>To get verbose output (so you can find the particular rule name to ignore), run:</p>
+<br>
+<pre><code class='code-multiline' lang='bash'>$ standard --verbose
+Error: Use JavaScript Standard Style
+  routes/error.js:20:36: <span class="sf_code_string">'file'</span> was used before it was defined. <span class="sf_code_punctuation">(</span>no-use-before-define<span class="sf_code_punctuation">)</span></code></pre>
+<p><br></p>
+<p>Disable <b>all rules</b> on a specific line:</p>
+<br>
+<pre><code class='code-multiline' lang='js'>file <span class="sf_code_operator">=</span> <span class="sf_code_string">'I know what I am doing'</span> <span class="sf_code_comment">// eslint-disable-line</span></code></pre>
+<p><br></p>
+<p>Or, disable <b>only</b> the <code class='code-inline'>"no-use-before-define"</code> rule:</p>
+<br>
+<pre><code class='code-multiline' lang='js'>file <span class="sf_code_operator">=</span> <span class="sf_code_string">'I know what I am doing'</span> <span class="sf_code_comment">// eslint-disable-line no-use-before-define</span></code></pre>
+<p><br></p>
+<p>Or, disable the <code class='code-inline'>"no-use-before-define"</code> rule for <b>multiple lines</b>:</p>
+<br>
+<pre><code class='code-multiline' lang='js'><span class="sf_code_comment">/* eslint-disable no-use-before-define */</span>
+console<span class="sf_code_punctuation">.</span><span class="sf_code_function">log</span><span class="sf_code_punctuation">(</span><span class="sf_code_string">'offending code goes here...'</span><span class="sf_code_punctuation">)</span>
+console<span class="sf_code_punctuation">.</span><span class="sf_code_function">log</span><span class="sf_code_punctuation">(</span><span class="sf_code_string">'offending code goes here...'</span><span class="sf_code_punctuation">)</span>
+console<span class="sf_code_punctuation">.</span><span class="sf_code_function">log</span><span class="sf_code_punctuation">(</span><span class="sf_code_string">'offending code goes here...'</span><span class="sf_code_punctuation">)</span>
+<span class="sf_code_comment">/* eslint-enable no-use-before-define */</span></code></pre>
+<p><br></p>
+<h2>I use a library that pollutes the global namespace. How do I prevent "variable is not defined" errors?</h2>
+<p>Some packages (e.g. <code class='code-inline'>mocha</code>) put their functions (e.g. <code class='code-inline'>describe</code>, <code class='code-inline'>it</code>) on the</p>
+<p>global object (poor form!). Since these functions are not defined or <code class='code-inline'>require</code>'d</p>
+<p>anywhere in your code, <code class='code-inline'>standard</code> will warn that you're using a variable that is</p>
+<p>not defined (usually, this rule is really useful for catching typos!). But we want</p>
+<p>to disable it for these global variables.</p>
+<br>
+<p>To let <code class='code-inline'>standard</code> (as well as humans reading your code) know that certain variables</p>
+<p>are global in your code, add this to the top of your file:</p>
+<br>
+<pre><code class='code-multiline' lang='js'><span class="sf_code_comment">/* global myVar1, myVar2 */</span></code></pre>
+<p><br></p>
+<p>If you have hundreds of files, it may be desirable to avoid adding comments to</p>
+<p>every file. In this case, run:</p>
+<br>
+<pre><code class='code-multiline' lang='bash'>$ standard --global myVar1 --global myVar2</code></pre>
+<p><br></p>
+<p>Or, add this to <code class='code-inline'>package.json</code>:</p>
+<br>
+<pre><code class='code-multiline' lang='json'><span class="sf_code_punctuation">{</span>
+  <span class="sf_code_property">"standard"</span><span class="sf_code_operator">:</span> <span class="sf_code_punctuation">{</span>
+    <span class="sf_code_property">"globals"</span><span class="sf_code_operator">:</span> <span class="sf_code_punctuation">[</span> <span class="sf_code_string">"myVar1"</span><span class="sf_code_punctuation">,</span> <span class="sf_code_string">"myVar2"</span> <span class="sf_code_punctuation">]</span>
+  <span class="sf_code_punctuation">}</span>
+<span class="sf_code_punctuation">}</span></code></pre>
+<p><br></p>
+<p>/Note: <code class='code-inline'>global</code> and <code class='code-inline'>globals</code> are equivalent./</p>
+<br>
+<h2>How do I use experimental JavaScript (ES Next) features?</h2>
+<p><code class='code-inline'>standard</code> supports the latest ECMAScript features, ES8 (ES2017), including</p>
+<p>language feature proposals that are in "Stage 4" of the proposal process.</p>
+<br>
+<p>To support experimental language features, <code class='code-inline'>standard</code> supports specifying a</p>
+<p>custom JavaScript parser. Before using a custom parser, consider whether the added</p>
+<p>complexity is worth it.</p>
+<br>
+<p>To use a custom parser, first install it from npm:</p>
+<br>
+<pre><code class='code-multiline' lang='bash'><span class="sf_code_function">npm</span> <span class="sf_code_function">install</span> babel-eslint --save-dev</code></pre>
+<p><br></p>
+<p>Then run:</p>
+<br>
+<pre><code class='code-multiline' lang='bash'>$ standard --parser babel-eslint</code></pre>
+<p><br></p>
+<p>Or, add this to <code class='code-inline'>package.json</code>:</p>
+<br>
+<pre><code class='code-multiline' lang='json'><span class="sf_code_punctuation">{</span>
+  <span class="sf_code_property">"standard"</span><span class="sf_code_operator">:</span> <span class="sf_code_punctuation">{</span>
+    <span class="sf_code_property">"parser"</span><span class="sf_code_operator">:</span> <span class="sf_code_string">"babel-eslint"</span>
+  <span class="sf_code_punctuation">}</span>
+<span class="sf_code_punctuation">}</span></code></pre>
+<p><br></p>
+<h2>Can I use a JavaScript language variant, like Flow or TypeScript?</h2>
+<p><code class='code-inline'>standard</code> supports the latest ECMAScript features. However, Flow and TypeScript add new</p>
+<p>syntax to the language, so they are not supported out-of-the-box.</p>
+<br>
+<p>To support JavaScript language variants, <code class='code-inline'>standard</code> supports specifying a custom JavaScript</p>
+<p>parser as well as an ESLint plugin to handle the changed syntax. Before using a JavaScript</p>
+<p>language variant, consider whether the added complexity is worth it.</p>
+<br>
+<h3>Flow</h3>
+<p>To use Flow, you need to run <code class='code-inline'>standard</code> with <code class='code-inline'>babel-eslint</code> as the parser and</p>
+<p><code class='code-inline'>eslint-plugin-flowtype</code> as a plugin.</p>
+<br>
+<pre><code class='code-multiline' lang='bash'><span class="sf_code_function">npm</span> <span class="sf_code_function">install</span> babel-eslint eslint-plugin-flowtype --save-dev</code></pre>
+<p><br></p>
+<p>Then run:</p>
+<br>
+<pre><code class='code-multiline' lang='bash'>$ standard --parser babel-eslint --plugin flowtype</code></pre>
+<p><br></p>
+<p>Or, add this to <code class='code-inline'>package.json</code>:</p>
+<br>
+<pre><code class='code-multiline' lang='json'><span class="sf_code_punctuation">{</span>
+  <span class="sf_code_property">"standard"</span><span class="sf_code_operator">:</span> <span class="sf_code_punctuation">{</span>
+    <span class="sf_code_property">"parser"</span><span class="sf_code_operator">:</span> <span class="sf_code_string">"babel-eslint"</span><span class="sf_code_punctuation">,</span>
+    <span class="sf_code_property">"plugins"</span><span class="sf_code_operator">:</span> <span class="sf_code_punctuation">[</span> <span class="sf_code_string">"flowtype"</span> <span class="sf_code_punctuation">]</span>
+  <span class="sf_code_punctuation">}</span>
+<span class="sf_code_punctuation">}</span></code></pre>
+<p><br></p>
+<p>/Note: <code class='code-inline'>plugin</code> and <code class='code-inline'>plugins</code> are equivalent./</p>
+<br>
+<h3>TypeScript</h3>
+<p>To use TypeScript, you need to run <code class='code-inline'>standard</code> with <code class='code-inline'>@typescript-eslint/parser</code> as the parser,</p>
+<p><code class='code-inline'>@typescript-eslint/eslint-plugin</code> as a plugin, and tell standard to lint <code class='code-inline'>**/*.ts</code> files (since it</p>
+<p>doesn't by default).</p>
+<br>
+<p>Unfortunately, there's an outstanding <a href="https://github.com/standard/standard/issues/1283">issue</a></p>
+<p>with <code class='code-inline'>standard</code> and Typescript where <code class='code-inline'>standard</code> would incorrectly emit unused-variable errors</p>
+<p>(e.g: when you import interfaces). And as a workaround, you need to use</p>
+<p><a href="https://github.com/standard/standardx">standardx</a> instead:sweat_smile:.</p>
+<br>
+<pre><code class='code-multiline' lang='bash'><span class="sf_code_function">npm</span> <span class="sf_code_function">install</span> standardx @typescript-eslint/parser @typescript-eslint/eslint-plugin --save-dev</code></pre>
+<p><br></p>
+<p>Then run:</p>
+<br>
+<pre><code class='code-multiline' lang='bash'>$ standardx --parser @typescript-eslint/parser --plugin @typescript-eslint/eslint-plugin **/*.ts</code></pre>
+<p><br></p>
+<p>Or, add this to <code class='code-inline'>package.json</code>:</p>
+<br>
+<pre><code class='code-multiline' lang='json'><span class="sf_code_punctuation">{</span>
+  <span class="sf_code_property">"eslintConfig"</span><span class="sf_code_operator">:</span> <span class="sf_code_punctuation">{</span>
+    <span class="sf_code_property">"rules"</span><span class="sf_code_operator">:</span> <span class="sf_code_punctuation">{</span>
+      <span class="sf_code_property">"no-unused-vars"</span><span class="sf_code_operator">:</span> <span class="sf_code_string">"off"</span><span class="sf_code_punctuation">,</span>
+      <span class="sf_code_property">"@typescript-eslint/no-unused-vars"</span><span class="sf_code_operator">:</span> <span class="sf_code_string">"error"</span>
+    <span class="sf_code_punctuation">}</span>
+  <span class="sf_code_punctuation">},</span>
+  <span class="sf_code_property">"standardx"</span><span class="sf_code_operator">:</span> <span class="sf_code_punctuation">{</span>
+    <span class="sf_code_property">"parser"</span><span class="sf_code_operator">:</span> <span class="sf_code_string">"@typescript-eslint/parser"</span><span class="sf_code_punctuation">,</span>
+    <span class="sf_code_property">"plugins"</span><span class="sf_code_operator">:</span> <span class="sf_code_punctuation">[</span> <span class="sf_code_string">"@typescript-eslint/eslint-plugin"</span> <span class="sf_code_punctuation">]</span>
+  <span class="sf_code_punctuation">}</span>
+<span class="sf_code_punctuation">}</span></code></pre>
+<p><br></p>
+<p>With that in <code class='code-inline'>package.json</code>, you can run:</p>
+<br>
+<pre><code class='code-multiline' lang='bash'>standardx **/*.ts</code></pre>
+<p><br></p>
+<p>And you probably should remove <code class='code-inline'>standard</code> too to avoid confusion where it's used by mistake</p>
+<p>instead of <code class='code-inline'>standardx</code>.</p>
+<br>
+<pre><code class='code-multiline' lang='bash'><span class="sf_code_function">npm</span> uninstall standard</code></pre>
+<p><br></p>
+<h2>What about Mocha, Jest, Jasmine, QUnit, etc?</h2>
+<p>To support mocha in test files, add this to the top of the test files:</p>
+<br>
+<pre><code class='code-multiline' lang='js'><span class="sf_code_comment">/* eslint-env mocha */</span></code></pre>
+<p><br></p>
+<p>Or, run:</p>
+<br>
+<pre><code class='code-multiline' lang='bash'>$ standard --env mocha</code></pre>
+<p><br></p>
+<p>Where <code class='code-inline'>mocha</code> can be one of <code class='code-inline'>jest</code>, <code class='code-inline'>jasmine</code>, <code class='code-inline'>qunit</code>, <code class='code-inline'>phantomjs</code>, and so on. To see a</p>
+<p>full list, check ESLint's</p>
+<p><a href="http://eslint.org/docs/user-guide/configuring.html#specifying-environments">specifying environments</a></p>
+<p>documentation. For a list of what globals are available for these environments,</p>
+<p>check the</p>
+<p><a href="https://github.com/sindresorhus/globals/blob/master/globals.json">globals</a> npm</p>
+<p>module.</p>
+<br>
+<p>/Note: <code class='code-inline'>env</code> and <code class='code-inline'>envs</code> are equivalent./</p>
+<br>
+<h2>What about Web Workers and Service Workers?</h2>
+<p>Add this to the top of web worker files:</p>
+<br>
+<pre><code class='code-multiline' lang='js'><span class="sf_code_comment">/* eslint-env worker */</span></code></pre>
+<p><br></p>
+<p>This lets <code class='code-inline'>standard</code> (as well as humans reading the code) know that <code class='code-inline'>self</code> is a</p>
+<p>global in web worker code.</p>
+<br>
+<p>For Service workers, add this instead:</p>
+<br>
+<pre><code class='code-multiline' lang='js'><span class="sf_code_comment">/* eslint-env serviceworker */</span></code></pre>
+<p><br></p>
+<h2>Can I check code inside of Markdown or HTML files?</h2>
+<p>To check code inside Markdown files, use <a href="https://www.npmjs.com/package/standard-markdown"><code class='code-inline'>standard-markdown</code></a>.</p>
+<br>
+<p>Alternatively, there are ESLint plugins that can check code inside Markdown, HTML,</p>
+<p>and many other types of language files:</p>
+<br>
+<p>To check code inside Markdown files, use an ESLint plugin:</p>
+<br>
+<pre><code class='code-multiline' lang='bash'>$ <span class="sf_code_function">npm</span> <span class="sf_code_function">install</span> eslint-plugin-markdown</code></pre>
+<p><br></p>
+<p>Then, to check JS that appears inside code blocks, run:</p>
+<br>
+<pre><code class='code-multiline' lang='bash'>$ standard --plugin markdown <span class="sf_code_string">'**/*.md'</span></code></pre>
+<p><br></p>
+<p>To check code inside HTML files, use an ESLint plugin:</p>
+<br>
+<pre><code class='code-multiline' lang='bash'>$ <span class="sf_code_function">npm</span> <span class="sf_code_function">install</span> eslint-plugin-html</code></pre>
+<p><br></p>
+<p>Then, to check JS that appears inside <code class='code-inline'>&lt;script&gt;</code> tags, run:</p>
+<br>
+<pre><code class='code-multiline' lang='bash'>$ standard --plugin html <span class="sf_code_string">'**/*.html'</span></code></pre>
+<p><br></p>
+<h2>Is there a Git <code class='code-inline'>pre-commit</code> hook?</h2>
+<p>Funny you should ask!</p>
+<br>
+<pre><code class='code-multiline' lang='bash'><span class="sf_code_comment">#!/bin/bash</span>
+
+<span class="sf_code_comment"># Ensure all JavaScript files staged for commit pass standard code style</span>
+<span class="sf_code_keyword">function</span> xargs-r<span class="sf_code_punctuation">()</span> <span class="sf_code_punctuation">{</span>
+  <span class="sf_code_comment"># Portable version of "xargs -r". The -r flag is a GNU extension that</span>
+  <span class="sf_code_comment"># prevents xargs from running if there are no input files.</span>
+  <span class="sf_code_keyword">if</span> IFS<span class="sf_code_operator">=</span> <span class="sf_code_function">read</span> -r -d $<span class="sf_code_string">'\n'</span> path<span class="sf_code_punctuation">;</span> <span class="sf_code_keyword">then</span>
+    <span class="sf_code_punctuation">{</span> <span class="sf_code_keyword">echo</span> <span class="sf_code_string">"</span><span class="sf_code_variable">$path</span><span class="sf_code_string">"</span><span class="sf_code_punctuation">;</span> <span class="sf_code_function">cat</span><span class="sf_code_punctuation">;</span> <span class="sf_code_punctuation">}</span> <span class="sf_code_operator">|</span> <span class="sf_code_function">xargs</span> <span class="sf_code_variable">$@</span>
+  <span class="sf_code_keyword">fi</span>
+<span class="sf_code_punctuation">}</span>
+<span class="sf_code_function">git</span> <span class="sf_code_function">diff</span> --name-only --cached --relative <span class="sf_code_operator">|</span> <span class="sf_code_function">grep</span> <span class="sf_code_string">'\.jsx\?$'</span> <span class="sf_code_operator">|</span> <span class="sf_code_function">sed</span> <span class="sf_code_string">'s/[^[:alnum:]]/\\&/g'</span> <span class="sf_code_operator">|</span> xargs-r -E <span class="sf_code_string">''</span> -t standard
+<span class="sf_code_keyword">if</span> <span class="sf_code_punctuation">[[</span> <span class="sf_code_variable">$?</span> -ne 0 <span class="sf_code_punctuation">]];</span> <span class="sf_code_keyword">then</span>
+  <span class="sf_code_keyword">echo</span> <span class="sf_code_string">'JavaScript Standard Style errors were detected. Aborting commit.'</span>
+  <span class="sf_code_keyword">exit</span> 1
+<span class="sf_code_keyword">fi</span></code></pre>
+<p><br></p>
+<h2>How do I make the output all colorful and pretty?</h2>
+<p>The built-in output is simple and straightforward, but if you like shiny things,</p>
+<p>install <a href="https://www.npmjs.com/package/snazzy">snazzy</a>:</p>
+<br>
+<pre><code class='code-multiline' lang='bash'>$ <span class="sf_code_function">npm</span> <span class="sf_code_function">install</span> snazzy</code></pre>
+<p><br></p>
+<p>And run:</p>
+<br>
+<pre><code class='code-multiline' lang='bash'>$ standard --verbose <span class="sf_code_operator">|</span> snazzy</code></pre>
+<p><br></p>
+<p>There's also <a href="https://www.npmjs.com/package/standard-tap">standard-tap</a>,</p>
+<p><a href="https://www.npmjs.com/package/standard-json">standard-json</a>,</p>
+<p><a href="https://www.npmjs.com/package/standard-reporter">standard-reporter</a>, and</p>
+<p><a href="https://www.npmjs.com/package/standard-summary">standard-summary</a>.</p>
+<br>
+<h2>Is there a Node.js API?</h2>
+<p>Yes!</p>
+<br>
+<h3><code class='code-inline'>standard.lintText(text, [opts], callback)</code></h3>
+<p>Lint the provided source <code class='code-inline'>text</code>. An <code class='code-inline'>opts</code> object may be provided:</p>
+<br>
+<pre><code class='code-multiline' lang='js'><span class="sf_code_punctuation">{</span>
+  cwd<span class="sf_code_punctuation">:</span> <span class="sf_code_string">''</span><span class="sf_code_punctuation">,</span>      <span class="sf_code_comment">// current working directory (default: process.cwd())</span>
+  filename<span class="sf_code_punctuation">:</span> <span class="sf_code_string">''</span><span class="sf_code_punctuation">,</span> <span class="sf_code_comment">// path of the file containing the text being linted (optional, though some eslint plugins require it)</span>
+  fix<span class="sf_code_punctuation">:</span> <span class="sf_code_boolean">false</span><span class="sf_code_punctuation">,</span>   <span class="sf_code_comment">// automatically fix problems</span>
+  globals<span class="sf_code_punctuation">:</span> <span class="sf_code_punctuation">[],</span>  <span class="sf_code_comment">// custom global variables to declare</span>
+  plugins<span class="sf_code_punctuation">:</span> <span class="sf_code_punctuation">[],</span>  <span class="sf_code_comment">// custom eslint plugins</span>
+  envs<span class="sf_code_punctuation">:</span> <span class="sf_code_punctuation">[],</span>     <span class="sf_code_comment">// custom eslint environment</span>
+  parser<span class="sf_code_punctuation">:</span> <span class="sf_code_string">''</span>    <span class="sf_code_comment">// custom js parser (e.g. babel-eslint)</span>
+<span class="sf_code_punctuation">}</span></code></pre>
+<p><br></p>
+<p>Additional options may be loaded from a <code class='code-inline'>package.json</code> if it's found for the</p>
+<p>current working directory.</p>
+<br>
+<p>The <code class='code-inline'>callback</code> will be called with an <code class='code-inline'>Error</code> and <code class='code-inline'>results</code> object.</p>
+<br>
+<p>The <code class='code-inline'>results</code> object will contain the following properties:</p>
+<br>
+<pre><code class='code-multiline' lang='js'><span class="sf_code_keyword">var</span> results <span class="sf_code_operator">=</span> <span class="sf_code_punctuation">{</span>
+  results<span class="sf_code_punctuation">:</span> <span class="sf_code_punctuation">[</span>
+    <span class="sf_code_punctuation">{</span>
+      filePath<span class="sf_code_punctuation">:</span> <span class="sf_code_string">''</span><span class="sf_code_punctuation">,</span>
+      messages<span class="sf_code_punctuation">:</span> <span class="sf_code_punctuation">[</span>
+        <span class="sf_code_punctuation">{</span> ruleId<span class="sf_code_punctuation">:</span> <span class="sf_code_string">''</span><span class="sf_code_punctuation">,</span> message<span class="sf_code_punctuation">:</span> <span class="sf_code_string">''</span><span class="sf_code_punctuation">,</span> line<span class="sf_code_punctuation">:</span> <span class="sf_code_number">0</span><span class="sf_code_punctuation">,</span> column<span class="sf_code_punctuation">:</span> <span class="sf_code_number">0</span> <span class="sf_code_punctuation">}</span>
+      <span class="sf_code_punctuation">],</span>
+      errorCount<span class="sf_code_punctuation">:</span> <span class="sf_code_number">0</span><span class="sf_code_punctuation">,</span>
+      warningCount<span class="sf_code_punctuation">:</span> <span class="sf_code_number">0</span><span class="sf_code_punctuation">,</span>
+      output<span class="sf_code_punctuation">:</span> <span class="sf_code_string">''</span> <span class="sf_code_comment">// fixed source code (only present with {fix: true} option)</span>
+    <span class="sf_code_punctuation">}</span>
+  <span class="sf_code_punctuation">],</span>
+  errorCount<span class="sf_code_punctuation">:</span> <span class="sf_code_number">0</span><span class="sf_code_punctuation">,</span>
+  warningCount<span class="sf_code_punctuation">:</span> <span class="sf_code_number">0</span>
+<span class="sf_code_punctuation">}</span></code></pre>
+<p><br></p>
+<h3><code class='code-inline'>results = standard.lintTextSync(text, [opts])</code></h3>
+<p>Synchronous version of <code class='code-inline'>standard.lintText()</code>. If an error occurs, an exception is</p>
+<p>thrown. Otherwise, a <code class='code-inline'>results</code> object is returned.</p>
+<br>
+<h3><code class='code-inline'>standard.lintFiles(files, [opts], callback)</code></h3>
+<p>Lint the provided <code class='code-inline'>files</code> globs. An <code class='code-inline'>opts</code> object may be provided:</p>
+<br>
+<pre><code class='code-multiline' lang='js'><span class="sf_code_keyword">var</span> opts <span class="sf_code_operator">=</span> <span class="sf_code_punctuation">{</span>
+  ignore<span class="sf_code_punctuation">:</span> <span class="sf_code_punctuation">[],</span>   <span class="sf_code_comment">// file globs to ignore (has sane defaults)</span>
+  cwd<span class="sf_code_punctuation">:</span> <span class="sf_code_string">''</span><span class="sf_code_punctuation">,</span>      <span class="sf_code_comment">// current working directory (default: process.cwd())</span>
+  fix<span class="sf_code_punctuation">:</span> <span class="sf_code_boolean">false</span><span class="sf_code_punctuation">,</span>   <span class="sf_code_comment">// automatically fix problems</span>
+  globals<span class="sf_code_punctuation">:</span> <span class="sf_code_punctuation">[],</span>  <span class="sf_code_comment">// global variables to declare</span>
+  plugins<span class="sf_code_punctuation">:</span> <span class="sf_code_punctuation">[],</span>  <span class="sf_code_comment">// eslint plugins</span>
+  envs<span class="sf_code_punctuation">:</span> <span class="sf_code_punctuation">[],</span>     <span class="sf_code_comment">// eslint environment</span>
+  parser<span class="sf_code_punctuation">:</span> <span class="sf_code_string">''</span>    <span class="sf_code_comment">// js parser (e.g. babel-eslint)</span>
+<span class="sf_code_punctuation">}</span></code></pre>
+<p><br></p>
+<p>The <code class='code-inline'>callback</code> will be called with an <code class='code-inline'>Error</code> and <code class='code-inline'>results</code> object (same as above).</p>
+<br>
+<h2>How do I contribute to StandardJS?</h2>
+<p>Contributions are welcome! Check out the <a href="https://github.com/standard/standard/issues">issues</a> or the <a href="https://github.com/standard/standard/pulls">PRs</a>, and make your own if you want something that you don't see there.</p>
+<br>
+<p>Want to chat? Join contributors on IRC in the <code class='code-inline'>#standard</code> channel on freenode.</p>
+<br>
+<p>Here are some important packages in the <code class='code-inline'>standard</code> ecosystem:</p>
+<br>
+<ul><li>*<a href="https://github.com/standard/standard">standard</a>* - this repo
+<ul><li>	*<a href="https://github.com/standard/standard-engine">standard-engine</a>* - cli engine for arbitrary eslint rules
+</li><li>	*<a href="https://github.com/standard/eslint-config-standard">eslint-config-standard</a>* - eslint rules for standard
+</li><li>	*<a href="https://github.com/standard/eslint-config-standard-jsx">eslint-config-standard-jsx</a>* - eslint rules for standard (JSX)
+</li><li>	*<a href="https://github.com/standard/eslint-plugin-standard">eslint-plugin-standard</a>* - custom eslint rules for standard (not part of eslint core)
+</li><li>	*<a href="https://github.com/eslint/eslint">eslint</a>* - the linter that powers standard
+</li></ul></li><li>*<a href="https://github.com/standard/snazzy">snazzy</a>* - pretty terminal output for standard
+</li><li>*<a href="https://github.com/standard/standard-www">standard-www</a>* - code for <a href="https://standardjs.com">https://standardjs.com</a>
+</li><li>*<a href="https://github.com/standard/semistandard">semistandard</a>* - standard, with semicolons (if you must)
+</li><li>*<a href="https://github.com/standard/standardx">standardx</a>* - standard, with custom tweaks
+</li></ul>
+<br>
+<p>There are also many *<a href="#are-there-text-editor-plugins">editor plugins</a>*, a list of</p>
+<p>*<a href="https://github.com/standard/standard-packages">npm packages that use <code class='code-inline'>standard</code></a>*,</p>
+<p>and an awesome list of</p>
+<p>*<a href="https://github.com/standard/awesome-standard">packages in the <code class='code-inline'>standard</code> ecosystem</a>*.</p>
+<br>
+<h2>Security Policies and Procedures</h2>
+<p>The <code class='code-inline'>standard</code> team and community take all security bugs in <code class='code-inline'>standard</code> seriously. Please see our <a href="https://github.com/standard/.github/blob/master/SECURITY.md">security policies and procedures</a> document to learn how to report issues.</p>
+<br>
+<h2>License</h2>
+<p><a href="LICENSE">MIT</a>. Copyright (c) <a href="https://feross.org">Feross Aboukhadijeh</a>.</p>
+        </div>
+        <script type="text/javascript">
+            (function() {
+
+    var doc_ols = document.getElementsByTagName("ol");
+
+    for ( i=0; i<doc_ols.length; i++) {
+
+        var ol_start = doc_ols[i].getAttribute("start") - 1;
+        doc_ols[i].setAttribute("style", "counter-reset:ol_counter " + ol_start + ";");
+
+    }
+
+})();
+
+        </script>
+        <style>
+            html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;font:inherit;font-size:100%;vertical-align:baseline}html{line-height:1}ol,ul{list-style:none}table{border-collapse:collapse;border-spacing:0}caption,th,td{text-align:left;font-weight:normal;vertical-align:middle}q,blockquote{quotes:none}q:before,q:after,blockquote:before,blockquote:after{content:"";content:none}a img{border:none}article,aside,details,figcaption,figure,footer,header,hgroup,main,menu,nav,section,summary{display:block}*{-moz-box-sizing:border-box;-webkit-box-sizing:border-box;box-sizing:border-box}html{font-size:87.5%;line-height:1.57143em}html{font-size:14px;line-height:1.6em;-webkit-text-size-adjust:100%}body{background:#fcfcfc;color:#545454;text-rendering:optimizeLegibility;font-family:"AvenirNext-Regular"}a{color:#de4c4f;text-decoration:none}h1{font-family:"AvenirNext-Medium";color:#333;font-size:1.6em;line-height:1.3em;margin-bottom:.78571em}h2{font-family:"AvenirNext-Medium";color:#333;font-size:1.3em;line-height:1em;margin-bottom:.62857em}h3{font-family:"AvenirNext-Medium";color:#333;font-size:1.15em;line-height:1em;margin-bottom:.47143em}p{margin-bottom:1.57143em;hyphens:auto}hr{height:1px;border:0;background-color:#dedede;margin:-1px auto 1.57143em auto}ul,ol{margin-bottom:.31429em}ul ul,ul ol,ol ul,ol ol{margin-bottom:0px}ol{counter-reset:ol_counter}ol li:before{content:counter(ol_counter) ".";counter-increment:ol_counter;color:#e06e73;text-align:right;display:inline-block;min-width:1em;margin-right:0.5em}b,strong{font-family:"AvenirNext-Bold"}i,em{font-family:"AvenirNext-Italic"}code{font-family:"Menlo-Regular"}.text-overflow-ellipsis{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.sf_code_string,.sf_code_selector,.sf_code_attr-name,.sf_code_char,.sf_code_builtin,.sf_code_inserted{color:#D33905}.sf_code_comment,.sf_code_prolog,.sf_code_doctype,.sf_code_cdata{color:#838383}.sf_code_number,.sf_code_boolean{color:#0E73A2}.sf_code_keyword,.sf_code_atrule,.sf_code_rule,.sf_code_attr-value,.sf_code_function,.sf_code_class-name,.sf_code_class,.sf_code_regex,.sf_code_important,.sf_code_variable,.sf_code_interpolation{color:#0E73A2}.sf_code_property,.sf_code_tag,.sf_code_constant,.sf_code_symbol,.sf_code_deleted{color:#1B00CE}.sf_code_macro,.sf_code_entity,.sf_code_operator,.sf_code_url{color:#920448}.note-wrapper{max-width:46em;margin:0px auto;padding:1.57143em 3.14286em}.note-wrapper.spotlight-preview{overflow-x:hidden}u{text-decoration:none;background-image:linear-gradient(to bottom, rgba(0,0,0,0) 50%,#e06e73 50%);background-repeat:repeat-x;background-size:2px 2px;background-position:0 1.05em}s{color:#878787}p{margin-bottom:0.1em}hr{margin-bottom:0.7em;margin-top:0.7em}ul li{text-indent:-0.35em}ul li:before{content:"•";color:#e06e73;display:inline-block;margin-right:0.3em}ul ul{margin-left:1.25714em}ol li{text-indent:-1.45em}ol ol{margin-left:1.25714em}blockquote{display:block;margin-left:-1em;padding-left:0.8em;border-left:0.2em solid #e06e73}.todo-list ul{margin-left:1.88571em}.todo-list li{text-indent:-1.75em}.todo-list li:before{content:"";display:static;margin-right:0px}.todo-checkbox{text-indent:-1.7em}.todo-checkbox svg{margin-right:0.3em;position:relative;top:0.2em}.todo-checkbox svg #check{display:none}.todo-checkbox.todo-checked #check{display:inline}.todo-checkbox.todo-checked+.todo-text{text-decoration:line-through;color:#878787}.code-inline{display:inline;background:white;border:solid 1px #dedede;padding:0.2em 0.5em;font-size:0.9em}.code-multiline{display:block;background:white;border:solid 1px #dedede;padding:0.7em 1em;font-size:0.9em;overflow-x:auto}.hashtag{display:inline-block;color:white;background:#b8bfc2;padding:0.0em 0.5em;border-radius:1em;text-indent:0}.hashtag a{color:#fff}.address a{color:#545454;background-image:linear-gradient(to bottom, rgba(0,0,0,0) 50%,#0da35e 50%);background-repeat:repeat-x;background-size:2px 2px;background-position:0 1.05em}.address svg{position:relative;top:0.2em;display:inline-block;margin-right:0.2em}.color-preview{display:inline-block;width:1em;height:1em;border:solid 1px rgba(0,0,0,0.3);border-radius:50%;margin-right:0.1em;position:relative;top:0.2em;white-space:nowrap}.color-code{margin-right:0.2em;font-family:"Menlo-Regular";font-size:0.9em}.color-hash{opacity:0.4}.ordered-list-number{color:#e06e73;text-align:right;display:inline-block;min-width:1em}.arrow svg{position:relative;top:0.08em;display:inline-block;margin-right:0.15em;margin-left:0.15em}.arrow svg #rod{stroke:#545454}.arrow svg #point{fill:#545454}mark{color:inherit;display:inline;padding:0.2em 0.5em;background-color:#fcffc0}img{max-width:100%;height:auto}
+
+        </style>
+    </body>
+</html>
