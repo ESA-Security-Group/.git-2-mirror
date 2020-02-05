@@ -1,0 +1,17 @@
+https://jeltef.github.io/PyLaTeX/current/
+https://jeltef.github.io/PyLaTeX/current/_static/css/theme.css
+https://jeltef.github.io/PyLaTeX/current/_static/jquery.js
+https://jeltef.github.io/PyLaTeX/current/_static/js/modernizr.min.js
+https://jeltef.github.io/PyLaTeX/current/_images/screenshot.png
+https://jeltef.github.io/PyLaTeX/current/_static/underscore.js
+https://jeltef.github.io/PyLaTeX/current/_static/doctools.js
+https://jeltef.github.io/PyLaTeX/current/_static/js/theme.js
+https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML
+https://jeltef.github.io/PyLaTeX/current/_static/fonts/Lato-Regular.ttf
+https://jeltef.github.io/PyLaTeX/current/_static/fonts/fontawesome-webfont.woff?v=4.2.0
+https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML
+https://jeltef.github.io/PyLaTeX/current/_static/fonts/Lato-Bold.ttf
+https://jeltef.github.io/PyLaTeX/current/_static/fonts/RobotoSlab-Bold.ttf
+https://jeltef.github.io/PyLaTeX/current/_static/fonts/RobotoSlab-Regular.ttf
+https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/config/TeX-AMS-MML_HTMLorMML.js?V=2.7.1
+https://jeltef.github.io/PyLaTeX/current/_static/favicons/favicon.ico
