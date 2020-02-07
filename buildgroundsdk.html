@@ -1,0 +1,329 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-78629613-2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-78629613-2');
+    </script>
+    <!-- Analytics END -->
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Install and build GroundSdk &mdash; GroundSdk iOS 1.1.2 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script type="text/javascript" src="_static/clipboard.min.js"></script>
+        <script type="text/javascript" src="_static/copybutton.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="_static/theme_overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Install with pods" href="installcocoapods.html" />
+    <link rel="prev" title="Introduction" href="overview.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> GroundSdk iOS
+          
+
+          
+            
+            <img src="_static/logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.1.2
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Introduction</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Install and build GroundSdk</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#environment-setup">Environment setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#download-groundsdk">Download GroundSdk</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#xcode-configuration">Xcode configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#build-and-run-groundsdk-demo">Build and run GroundSdk Demo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#connect-to-your-drone">Connect to your drone</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="installcocoapods.html">Install with pods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appsubmission.html">Notes</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://developer.parrot.com/docs/groundsdk-ios-samples/">Samples</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">GroundSdk iOS</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Install and build GroundSdk</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="install-and-build-groundsdk">
+<span id="repo-install"></span><h1>Install and build GroundSdk<a class="headerlink" href="#install-and-build-groundsdk" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="environment-setup">
+<h2>Environment setup<a class="headerlink" href="#environment-setup" title="Permalink to this headline">¶</a></h2>
+<p>Download and install the latest Xcode from App Store Application</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>GroundSdk has been successfully tested with Xcode 10.2, Swift 4.2
+and Mac OS Mojave 10.14</p>
+</div>
+<p>Install Homebrew</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> /usr/bin/ruby -e <span class="s2">&quot;</span><span class="k">$(</span>curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install<span class="k">)</span><span class="s2">&quot;</span>
+</pre></div>
+</div>
+<p>Install the required tools using Homebrew</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> brew install bash-completion git xctool pkgconfig repo python3 cmake autoconf automake libtool
+</pre></div>
+</div>
+<p>Install the following Python module</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> pip3 install requests
+</pre></div>
+</div>
+<p>Configure git with your real name and email address</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> git config --global user.name <span class="s2">&quot;Your Name&quot;</span>
+<span class="gp">$</span> git config --global user.email <span class="s2">&quot;you@example.com&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="download-groundsdk">
+<h2>Download GroundSdk<a class="headerlink" href="#download-groundsdk" title="Permalink to this headline">¶</a></h2>
+<p>Create your working directory</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> mkdir groundsdk
+<span class="gp">$</span> <span class="nb">cd</span> groundsdk
+</pre></div>
+</div>
+<p>Initialize Repo in your working directory</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> repo init -u https://github.com/Parrot-Developers/groundsdk-manifest
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can learn how to use Repo on the <a class="reference external" href="https://source.android.com/setup/develop/repo">command reference page</a></p>
+</div>
+<p>Download the GroundSdk source tree</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> repo sync
+</pre></div>
+</div>
+</div>
+<div class="section" id="xcode-configuration">
+<h2>Xcode configuration<a class="headerlink" href="#xcode-configuration" title="Permalink to this headline">¶</a></h2>
+<p>Open project to install automatically last components of Xcode</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span>  open ./products/groundsdk/ios/xcode/groundsdk.xcworkspace/
+</pre></div>
+</div>
+<p>Connect your Apple developer account and select your provisioning profile</p>
+</div>
+<div class="section" id="build-and-run-groundsdk-demo">
+<h2>Build and run GroundSdk Demo<a class="headerlink" href="#build-and-run-groundsdk-demo" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li><p>Build GroundSdk Demo for iOS device</p></li>
+</ol>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">#</span> the build script will ask you to enter your password session a few <span class="nb">times</span>
+<span class="gp">$</span> ./build.sh -p groundsdk-ios -t build -j
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>To know more about building options</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> ./build.sh -p groundsdk-ios -t
+</pre></div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Build GroundSdk Demo for Simulator</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> ./build.sh -p groundsdk-ios_sim -t build -j
+</pre></div>
+</div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Connect an iOS device to your computer</p></li>
+<li><p>Go back to Xcode</p></li>
+<li><p>Select iOS device</p></li>
+<li><p>Click on Build and then run the current scheme</p></li>
+</ol>
+</div>
+<div class="section" id="connect-to-your-drone">
+<h2>Connect to your drone<a class="headerlink" href="#connect-to-your-drone" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li><p>Switch on your drone</p></li>
+<li><p>Open wifi settings on your iOS device</p></li>
+<li><p>Select your drone’s wifi access point (e.g. ANAFI-xxxxxxx)</p></li>
+<li><p>Enter wifi password</p></li>
+<li><p>Open Ground SDK Demo app</p></li>
+<li><p>Your drone should appear in the list, select it</p></li>
+<li><p>Click on Connect</p></li>
+</ol>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="installcocoapods.html" class="btn btn-neutral float-right" title="Install with pods" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="overview.html" class="btn btn-neutral float-left" title="Introduction" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018-2019, Parrot
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
